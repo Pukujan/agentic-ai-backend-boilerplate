@@ -67,7 +67,7 @@ This backend is **compute-driven**, not request-driven.
 
 ## High-Level Architecture
 
-`Client / Frontend
+```Client / Frontend
 |
 v
 POST /events
@@ -82,7 +82,8 @@ v
 Insights + Agent Runs (Supabase)
 |
 v
-Dashboards / Analytics / Consumers`
+Dashboards / Analytics / Consumers
+```
 
 
 ---
@@ -151,7 +152,7 @@ They are designed to be:
 
 ## Project Structure
 
-`src/
+```src/
 ├── app.ts
 ├── main.ts
 │
@@ -186,7 +187,8 @@ They are designed to be:
 │ ├── db/
 │ ├── llm/
 │ └── utils/
-│ └── ids.ts`
+│ └── ids.ts
+```
 
 
 ---

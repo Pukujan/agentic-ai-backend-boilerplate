@@ -32,7 +32,7 @@ SUPABASE_SERVICE_ROLE_KEY=
 # LLM (optional / future use)
 OPENROUTER_API_KEY=
 OPENROUTER_MODEL=
-
+```
 ---
 
 ## What This Boilerplate Is For

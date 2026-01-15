@@ -8,6 +8,30 @@ Instead, it provides a **data-centric foundation** where raw events are stored, 
 > ⚠️ Note  
 > No production AI agent is implemented yet.  
 > An anomaly agent folder exists as a placeholder to establish structure and conventions.
+>
+
+## Environment Variables
+
+This project uses a `.env` file for configuration.
+
+### 1️⃣ Create a `.env` file
+At the root of the project:
+
+```bash
+touch .env
+2️⃣ Add the following variables
+env
+Copy code
+# Server
+PORT=3001
+
+# Supabase
+SUPABASE_URL=
+SUPABASE_SERVICE_ROLE_KEY=
+
+# LLM (optional / future use)
+OPENROUTER_API_KEY=
+OPENROUTER_MODEL=
 
 ---
 

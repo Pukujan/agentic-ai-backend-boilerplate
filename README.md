@@ -222,6 +222,153 @@ New agents can be added without modifying existing ones.
 
 ---
 
+---
+
+## Installation & Running the Server
+
+### 1️⃣ Install dependencies
+From the project root:
+
+```bash
+npm install
+```
+
+This installs:
+- Express
+- Supabase client
+- Zod
+- TypeScript tooling
+- Development utilities
+
+---
+
+### 2️⃣ Start the development server
+
+```bash
+npm run dev
+```
+
+If successful, you should see something like:
+
+```text
+Server running on port 3001
+```
+
+The server uses:
+- `nodemon` for auto-reload
+- `ts-node` to run TypeScript directly
+
+---
+
+## Health Checks & Testing
+
+These endpoints help verify that your backend, database, and LLM wiring are working correctly.
+
+---
+
+### ✅ Server Health Check
+
+```bash
+curl http://localhost:3001/health
+```
+
+Expected response:
+```json
+{ "ok": true }
+```
+
+---
+
+### ✅ Supabase Connection Test
+
+This verifies:
+- `SUPABASE_URL`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- Network access to Supabase
+
+```bash
+curl http://localhost:3001/supabase-health
+```
+
+Expected response:
+```json
+{
+  "ok": true,
+  "buckets": []
+}
+```
+
+> Note  
+> This test does **not** require any tables to exist yet.  
+> It confirms that Supabase credentials are valid.
+
+---
+
+### ✅ Database Test (requires `events` table)
+
+```bash
+curl http://localhost:3001/db-health
+```
+
+Expected response:
+```json
+{
+  "ok": true,
+  "sample": []
+}
+```
+
+If the table does not exist yet, Supabase will return an error — this is expected until schema setup is complete.
+
+---
+
+### ✅ OpenRouter / LLM Health Check (optional)
+
+This verifies:
+- `OPENROUTER_API_KEY`
+- `OPENROUTER_MODEL`
+- Ability to call an external LLM provider
+
+```bash
+curl http://localhost:3001/llm-health
+```
+
+Expected response:
+```json
+{
+  "ok": true,
+  "reply": "OK"
+}
+```
+
+If this fails, common causes include:
+- Missing or invalid OpenRouter API key
+- Incorrect model name
+- Network issues
+
+---
+
+## Common Commands Summary
+
+```bash
+npm install
+npm run dev
+curl http://localhost:3001/health
+curl http://localhost:3001/supabase-health
+curl http://localhost:3001/llm-health
+```
+
+---
+
+## Notes
+
+- All health endpoints are intended for **development only**
+- Do not expose service role keys or LLM keys to the frontend
+- These checks exist to validate infrastructure before agents are added
+
+---
+
+
 ## One-Sentence Summary
 
 > A boilerplate for building event-driven, agent-oriented backends where raw product events are transformed into structured insights.
